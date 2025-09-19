@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>两家人的幸福选择｜家庭婚恋匹配 App</title>
+  <meta name="description" content="一个为父母与子女共同决策而生的婚恋匹配 App：父母与孩子三方同意，家庭互相满意，左滑右滑更轻松。" />
+  <meta name="keywords" content="父母婚恋, 家庭匹配, 相亲, 婚恋App, 父母为孩子找对象" />
+  <meta name="color-scheme" content="light only">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <meta property="og:title" content="两家人的幸福选择｜家庭婚恋匹配 App" />
+  <meta property="og:description" content="父母与孩子三方同意，家庭互相满意，像 Tinder 一样左滑右滑匹配家庭。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og.png" />
+  <meta name="theme-color" content="#F2E9E4" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "家庭婚恋匹配 App",
+    "url": "https://example.com",
+    "potentialAction": {
+      "@type": "RegisterAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://example.com#register"
+      },
+      "result": {
+        "@type": "RegisterAction",
+        "name": "加入候补名单"
+      }
+    }
+  }
+  </script>
+  <style>
+    :root{
+      --bg:#FFFCFA;      /* 背景主色 */
+      --card:#FFFFFF;    /* 卡片底色 */
+      --ink:#1F2937;     /* 正文色 */
+      --muted:#6B7280;   /* 次级文字 */
+      --brand:#F15B6C;   /* 品牌主色（温暖红粉） */
+      --brand-2:#5B8DEF; /* 品牌辅色（安心蓝） */
+      --accent:#FCD34D;  /* 点缀色（柔和黄） */
+      --line:#E5E7EB;    /* 细边框 */
+      --radius:16px;
+      --radius-lg:24px;
+      --shadow:0 10px 30px rgba(31,41,55,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:"Noto Sans SC",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:var(--ink)}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;backdrop-filter:saturate(150%) blur(8px); background:rgba(255,252,250,.8); border-bottom:1px solid var(--line); z-index:50}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;min-height:56px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px;line-height:1}
+    .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#FF9AA2);display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:var(--shadow)}
+    .nav-links{display:flex;gap:20px;align-items:center}
+    .nav-links a{color:var(--ink);font-weight:500;line-height:1}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:700;cursor:pointer}
+    .btn-primary{background:var(--brand);color:#fff}
+    .btn-primary:hover{filter:brightness(.96)}
+    .btn-outline{background:#fff;border-color:var(--line);color:var(--ink)}
+
+    /* Hero */
+    .hero{padding:72px 0 32px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+    .headline{font-size:40px;line-height:1.15;margin:0 0 14px;font-weight:900}
+    .subhead{font-size:18px;color:var(--muted);margin:0 0 24px}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:var(--muted);font-size:14px}
+    .mock{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow)}
+
+    /* Feature grid */
+    .section{padding:56px 0}
+    .section h2{font-size:28px;margin:0 0 12px}
+    .section p.lead{color:var(--muted);margin:0 0 24px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 6px;font-size:18px}
+    .icon{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#FFF4F5;color:var(--brand);border:1px solid #FFDDE0}
+
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{background:var(--card);border:1px solid var(--line);padding:18px;border-radius:var(--radius);position:relative}
+    .step .num{position:absolute;top:12px;right:12px;background:var(--accent);border-radius:10px;padding:4px 8px;font-weight:800;font-size:12px}
+
+    /* Benefits */
+    .list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .list .item{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+    .tick{width:24px;height:24px;border-radius:6px;background:#ECFDF5;border:1px solid #D1FAE5;display:grid;place-items:center}
+
+    /* Testimonials / Trust */
+    .trust{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+    .quote{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+    .privacy{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+
+    /* FAQ */
+    .faq{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    details{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+    summary{cursor:pointer;font-weight:700}
+
+    /* CTA form */
+    .cta{background:linear-gradient(180deg,#FFF7F8,#FFFFFF);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow)}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    label{font-size:14px;color:var(--muted)}
+    input,select,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff;font:inherit}
+    .full{grid-column:1/-1}
+
+    footer{padding:32px 0;color:var(--muted);border-top:1px solid var(--line);margin-top:40px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .list{grid-template-columns:1fr 1fr}
+      .trust{grid-template-columns:1fr}
+      .faq{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header aria-label="站点头部导航">
+    <div class="container nav">
+      <a class="logo" href="#" aria-label="返回主页">
+        <span class="logo-mark">家</span>
+        <span>家庭婚恋匹配</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#features">功能介绍</a>
+        <a href="#flow">工作流程</a>
+        <a href="#faq">常见问题</a>
+        <a href="#register" class="btn btn-outline">立即注册</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge" aria-label="亮点"> 
+            <span>👨‍👩‍👧‍👦 两家人的幸福选择</span>
+          </div>
+          <h1 class="headline">不仅是你和 TA，更是 <span style="background:linear-gradient(90deg,var(--brand),#FF9AA2);-webkit-background-clip:text;color:transparent">两个家庭</span> 的认同</h1>
+          <p class="subhead">父母与孩子三方同意，家庭互相满意。像 Tinder 一样左滑右滑，但我们匹配的是 <strong>“家庭与家庭”</strong>。</p>
+          <div class="hero-cta">
+            <a href="#register" class="btn btn-primary" aria-label="跳转到注册表单">立即加入候补名单</a>
+            <a href="#features" class="btn btn-outline">了解功能</a>
+          </div>
+        </div>
+        <div class="mock" aria-label="产品界面示意">
+          <!-- 简单可替换的示意图 -->
+          <svg viewBox="0 0 760 520" width="100%" height="100%" role="img" aria-label="界面示意图">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#FFE4E8"/>
+                <stop offset="100%" stop-color="#E7F0FF"/>
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="760" height="520" rx="18" fill="url(#g1)"/>
+            <!-- 手机壳 -->
+            <g transform="translate(60,40)">
+              <rect width="240" height="440" rx="24" fill="#fff" stroke="#E5E7EB"/>
+              <rect x="16" y="16" width="208" height="24" rx="8" fill="#F3F4F6"/>
+              <rect x="16" y="56" width="208" height="308" rx="16" fill="#FFF1F2" stroke="#FFDDE0"/>
+              <text x="120" y="212" text-anchor="middle" font-size="18" fill="#F15B6C">左滑/右滑 家庭卡片</text>
+              <rect x="16" y="380" width="64" height="40" rx="12" fill="#FEE2E2"/>
+              <rect x="88" y="380" width="64" height="40" rx="12" fill="#E0E7FF"/>
+              <rect x="160" y="380" width="64" height="40" rx="12" fill="#DCFCE7"/>
+            </g>
+            <!-- 连接箭头 / 家庭 → 家庭 -->
+            <g transform="translate(340,140)">
+              <circle cx="60" cy="60" r="60" fill="#FFFFFF" stroke="#E5E7EB"/>
+              <text x="60" y="66" text-anchor="middle" font-size="16" fill="#111827">家庭 A</text>
+              <circle cx="280" cy="60" r="60" fill="#FFFFFF" stroke="#E5E7EB"/>
+              <text x="280" y="66" text-anchor="middle" font-size="16" fill="#111827">家庭 B</text>
+              <path d="M120,60 L220,60" stroke="#F15B6C" stroke-width="6" stroke-linecap="round"/>
+              <polygon points="220,60 205,52 205,68" fill="#F15B6C"/>
+              <text x="200" y="92" text-anchor="middle" font-size="14" fill="#6B7280">父母 & 子女共同同意</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2>产品功能</h2>
+        <p class="lead">围绕“家庭与家庭”的匹配机制，提升真实与满意度。</p>
+        <div class="grid-3">
+          <article class="card" aria-label="家庭双向匹配">
+            <div class="icon">👨‍👩‍👧‍👦</div>
+            <h3>家庭双向匹配</h3>
+            <p>需要双方父母与子女 <strong>全部同意</strong> 才能达成匹配，减少代际冲突，建立共识。</p>
+          </article>
+          <article class="card" aria-label="左滑右滑">
+            <div class="icon">👆</div>
+            <h3>左滑右滑</h3>
+            <p>延续大家熟悉的轻量交互，迅速表达意向；也可一键深入查看对方家庭档案。</p>
+          </article>
+          <article class="card" aria-label="多维度匹配">
+            <div class="icon">🧭</div>
+            <h3>多维度匹配</h3>
+            <p>兴趣、职业、价值观、成长环境、家庭观念等多维权重可调，更贴近真实需求。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flow -->
+    <section id="flow" class="section">
+      <div class="container">
+        <h2>如何运作</h2>
+        <p class="lead">四步走，帮助两家人更快找到“对路”的选择。</p>
+        <div class="steps">
+          <div class="step">
+            <div class="num">Step 1</div>
+            <h3>创建家庭档案</h3>
+            <p>父母先创建家庭档案，包含基本信息与期待。</p>
+          </div>
+          <div class="step">
+            <div class="num">Step 2</div>
+            <h3>子女确认信息</h3>
+            <p>孩子补充个人资料与偏好，确定“底线与红线”。</p>
+          </div>
+          <div class="step">
+            <div class="num">Step 3</div>
+            <h3>滑动浏览家庭</h3>
+            <p>父母和孩子各自表达意向，系统聚合为“家庭意向”。</p>
+          </div>
+          <div class="step">
+            <div class="num">Step 4</div>
+            <h3>三方同意 → 匹配</h3>
+            <p>双方父母与子女全部同意，才算匹配成功并开放沟通渠道。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="section">
+      <div class="container">
+        <h2>为什么选择我们</h2>
+        <div class="list">
+          <div class="item">
+            <div class="tick">✔</div>
+            <div>
+              <h3>减少代际摩擦</h3>
+              <p>把分歧前置并结构化，尊重孩子的选择，也尊重父母的关切。</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="tick">✔</div>
+            <div>
+              <h3>家庭整体满意</h3>
+              <p>不仅是两个人的情感，更是两家人的生活方式与价值观的契合。</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="tick">✔</div>
+            <div>
+              <h3>严肃真实</h3>
+              <p>实名/多重校验（预留），更真实的资料、更可靠的沟通。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust -->
+    <section class="section">
+      <div class="container trust">
+        <div class="quote" aria-label="故事与评价">
+          <h2>真实故事</h2>
+          <p class="lead">用真实案例建立信任感。你可以在这里展示来自父母和子女的反馈与故事。</p>
+          <blockquote>
+            “终于不用在饭桌上吵架了，我们把彼此的期待写清楚，反而更理解孩子。” — 一位妈妈
+          </blockquote>
+          <blockquote>
+            “我发现爸妈其实也会担心，我说清楚我的底线，他们也更尊重我的选择。” — 一位子女
+          </blockquote>
+        </div>
+        <aside class="privacy" aria-label="隐私与安全">
+          <h2>隐私与安全</h2>
+          <ul>
+            <li>数据仅用于匹配与沟通（遵从隐私政策）</li>
+            <li>支持用户随时导出与删除数据</li>
+            <li>反骚扰与举报机制</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">常见问题</h2>
+        <div class="faq" role="list">
+          <details>
+            <summary>孩子必须同意吗？</summary>
+            <p>必须。我们的核心是“三方同意”原则，任何一方不同意都不会匹配。</p>
+          </details>
+          <details>
+            <summary>如何推荐候选家庭？</summary>
+            <p>基于多维度偏好与约束（兴趣、生活方式、家庭观念等）进行综合匹配并可调权重。</p>
+          </details>
+          <details>
+            <summary>如何保证信息真实？</summary>
+            <p>预留实名/学业/职业等校验选项，并设立举报与复核机制（MVP 可先人工审核）。</p>
+          </details>
+          <details>
+            <summary>是否收费？</summary>
+            <p>MVP 阶段免费或邀请制内测；正式版本可能采用订阅与增值服务。</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / Register -->
+    <section id="register" class="section">
+      <div class="container cta" aria-label="加入候补表单">
+        <h2 style="margin-top:0">加入候补名单</h2>
+        <p class="lead">留下联系方式，第一时间获得内测资格与上线通知。</p>
+        <form id="waitlist-form" novalidate>
+          <div>
+            <label for="name">姓名（父母或子女）</label>
+            <input id="name" name="name" placeholder="张先生 / 李女士 / 王同学" required />
+          </div>
+          <div>
+            <label for="role">您的身份</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>请选择</option>
+              <option>父/母</option>
+              <option>子女</option>
+              <option>全家共同填写</option>
+            </select>
+          </div>
+          <div>
+            <label for="email">邮箱</label>
+            <input id="email" type="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div>
+            <label for="phone">手机号（可选）</label>
+            <input id="phone" type="tel" name="phone" placeholder="仅用于通知内测资格" />
+          </div>
+          <div class="full">
+            <label for="city">所在城市（可选）</label>
+            <input id="city" name="city" placeholder="例如：上海 / 北京 / 深圳" />
+          </div>
+          <div class="full">
+            <label for="notes">补充说明（可选）</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="例如：希望匹配重视教育背景；孩子更看重性格契合等"></textarea>
+          </div>
+          <div class="full" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <button class="btn btn-primary" type="submit">提交信息</button>
+            <span id="form-msg" role="status" aria-live="polite" style="color:var(--muted)"></span>
+          </div>
+        </form>
+        <p style="margin:8px 0 0;color:var(--muted);font-size:14px">提交即表示同意我们的 <a href="#" aria-label="查看隐私政策">隐私政策</a> 与 <a href="#" aria-label="查看用户条款">用户条款</a>。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" aria-label="页脚">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="y"></span> 家庭婚恋匹配 — 两家人的幸福选择</div>
+        <div style="display:flex;gap:12px">
+          <a href="#">隐私政策</a>
+          <a href="#">使用条款</a>
+          <a href="#">联系我们</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 年份
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // MVP 表单：本地保存 + 伪成功提示（你可替换为真实 API，如 Formspree / Airtable / Supabase）
+    const form = document.getElementById('waitlist-form');
+    const msg  = document.getElementById('form-msg');
+
+    function isValidEmail(v){
+      return /\S+@\S+\.\S+/.test(v);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = '';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      if(!data.name){ msg.textContent = '请填写姓名'; return; }
+      if(!data.role){ msg.textContent = '请选择身份'; return; }
+      if(!isValidEmail(data.email||'')){ msg.textContent = '请填写有效邮箱'; return; }
+
+      try{
+        const key = 'family-match-waitlist';
+        const list = JSON.parse(localStorage.getItem(key) || '[]');
+        list.push({ ...data, ts: new Date().toISOString() });
+        localStorage.setItem(key, JSON.stringify(list));
+        form.reset();
+        msg.textContent = '已提交！我们将尽快联系您（示例存储于本地，可替换为真实后端）';
+      }catch(err){
+        console.error(err);
+        msg.textContent = '提交失败，请稍后重试';
+      }
+    });
+  </script>
+</body>
+</html>
